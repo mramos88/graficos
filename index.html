@@ -158,22 +158,29 @@
    </script>
 </head>
 <body>
-        
-        <div class="row">
-                <div class="col-lg-6 col-sm-12">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+        <div class="carousel-inner">
+                <div class="item active">
                         <canvas id="densityChart" width="300" height="150"></canvas>
                 </div>
-
-                <div class="col-lg-6 col-sm-12">
+            
+                <div class="item">
                         <canvas id="volumenCervezaChart" width="300" height="150"></canvas>
                 </div>
-              </div>
-    
             
-       
-       
-              <div class="row">
-                     <canvas id="popChart" width="300" height="150" hidden></canvas>
+                <div class="item">
+                        <canvas id="popChart" width="300" height="150" hidden></canvas>
+                </div>
+              </div>
+        
+
+                     
               </div>
     
 </body>
