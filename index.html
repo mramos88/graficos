@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo graficos</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="./node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="./node_modules/chart.js/dist/Chart.min.js"></script>
+    
+   <script>
+   
+       $("document").ready(function() {
+   
+        barras();
+        lineal();
+        dosEjes();
+
+    });
+
+        function barras(){
+            var popCanvas = $("#popChart");
+        var popCanvas = document.getElementById("popChart");
+        var popCanvas = document.getElementById("popChart").getContext("2d");
+        var barChart = new Chart(popCanvas, {
+        type: 'bar',
+        data: {
+            labels: ["China", "India", "United States", "Indonesia", "Brazil", "Pakistan", "Nigeria", "Bangladesh", "Russia", "Japan"],
+            datasets: [{
+            label: 'Population',
+            data: [1379302771, 1281935911, 326625791, 260580739, 207353391, 204924861, 190632261, 157826578, 142257519, 126451398],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)'
+            ]
+            }]
+        }
+        });
+        }
+
+       function lineal(){
+            var volumenCervezaCanvas = document.getElementById("volumenCervezaChart");
+
+            Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 18;
+
+
+            var dataFirst = {
+                label: "2017",
+                data: [3598.95, 2834.44, 3167.56, 2600.74, 1566.98, 1116.47, 1860.32,1754.85,2714.00,2862.27,2260.27,4063.24],
+                lineTension: 0.3,
+                fill: false,
+                borderColor: 'red',
+                backgroundColor: 'transparent',
+                pointBorderColor: 'red',
+                pointBackgroundColor: 'lightgreen',
+                pointRadius: 5,
+                pointHoverRadius: 15,
+                pointHitRadius: 30,
+                pointBorderWidth: 2,
+                pointStyle: 'rect'
+            };
+
+            var dataSecond = {
+                label: "2018",
+                data: [3249.34, 3135.18, 2781.01, 2299.86],
+                lineTension: 0.3,
+                fill: false,
+                borderColor: 'purple',
+                backgroundColor: 'transparent',
+                pointBorderColor: 'purple',
+                pointBackgroundColor: 'lightgreen',
+                pointRadius: 5,
+                pointHoverRadius: 15,
+                pointHitRadius: 30,
+                pointBorderWidth: 2
+            };
+
+            var volumenCervezaData = {
+            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Ocutubre", "Noviembre", "Diciembre"],
+            datasets: [dataFirst,dataSecond]
+            };
+
+            var chartOptions = {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                boxWidth: 80,
+                fontColor: 'black'
+                }
+            }
+            };
+
+            var lineChart = new Chart(volumenCervezaCanvas, {
+            type: 'line',
+            data: volumenCervezaData,
+            options: chartOptions
+            });
+       }
+       function dosEjes(){
+        var densityCanvas = document.getElementById("densityChart");
+
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 18;
+
+        var densityData = {
+        label: '2017',
+        data: [-12, -8, 0, -15, -16, -9],
+        backgroundColor: 'rgba(0, 99, 132, 0.6)',
+        borderWidth: 0,
+        yAxisID: "y-axis-density"
+        };
+
+        var gravityData = {
+        label: '2018',
+        data: [-22,29,-1,83,-13,-11],
+        backgroundColor: 'rgba(99, 132, 0, 0.6)',
+        borderWidth: 0,
+        yAxisID: "y-axis-density"
+        };
+
+        var planetData = {
+        labels: ["Cervezas", "Premium", "Gaseosas", "Resto UNG", "Aguas y Sab", "TOT CATEG."],
+        datasets: [densityData, gravityData]
+        };
+
+        var chartOptions = {
+        scales: {
+            xAxes: [{
+            barPercentage: 1,
+            categoryPercentage: 0.6
+            }],
+            yAxes: [{
+            id: "y-axis-density"
+            }]
+        }
+        };
+
+        var barChart = new Chart(densityCanvas, {
+        type: 'bar',
+        data: planetData,
+        options: chartOptions
+        });
+       }
+   </script>
+</head>
+<body>
+        
+        <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                        <canvas id="densityChart" width="300" height="150"></canvas>
+                </div>
+
+                <div class="col-lg-6 col-sm-12">
+                        <canvas id="volumenCervezaChart" width="300" height="150"></canvas>
+                </div>
+              </div>
+    
+            
+       
+       
+              <div class="row">
+                     <canvas id="popChart" width="300" height="150" hidden></canvas>
+              </div>
+    
+</body>
+</html>
